@@ -19,10 +19,10 @@
                     },
                     colors: {
                         brand: {
-                            light: '#F2D3CC', /* ชมพูน้ำตาลอ่อน */
-                            DEFAULT: '#A27B5C', /* น้ำตาลอบอุ่น */
-                            dark: '#6F4E37', /* น้ำตาลเข้ม */
-                            bg: '#FAF5F2' /* ขาวครีมน้ำตาล */
+                            light: '#E8C5C5', /* ชมพูน้ำตาลสว่าง */
+                            DEFAULT: '#8D5B4C', /* น้ำตาลชมพูเข้ม */
+                            dark: '#5D3A3A', /* น้ำตาลโกโก้เข้ม */
+                            bg: '#F5E8E1' /* ครีมน้ำตาล */
                         }
                     }
                 }
@@ -32,25 +32,54 @@
     <style>
         body {
             font-family: 'Mitr', sans-serif;
-            background-color: #EAE3D2;
+            background-color: #3D2B2B;
             -webkit-tap-highlight-color: transparent;
         }
         .scallop-top {
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%23A27B5C' opacity='.25'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-23.82V0Z' fill='%23A27B5C' opacity='.5'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%23A27B5C'/%3E%3C/svg%3E");
+            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1200 120' preserveAspectRatio='none'%3E%3Cpath d='M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z' fill='%238D5B4C' opacity='.25'/%3E%3Cpath d='M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-23.82V0Z' fill='%238D5B4C' opacity='.5'/%3E%3Cpath d='M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z' fill='%238D5B4C'/%3E%3C/svg%3E");
             background-size: cover;
             background-position: center bottom;
             height: 40px;
             width: 100%;
         }
+        
+        /* กรอบไฟวนสมูท */
+        .glow-border {
+            position: relative;
+            z-index: 1;
+            overflow: hidden;
+        }
+        .glow-border::before {
+            content: "";
+            position: absolute;
+            z-index: -1;
+            left: -50%;
+            top: -50%;
+            width: 200%;
+            height: 200%;
+            background: conic-gradient(transparent, #E8C5C5, transparent, #8D5B4C);
+            animation: rotateGlow 4s linear infinite;
+        }
+        .glow-inner {
+            background: white;
+            height: calc(100% - 4px);
+            width: calc(100% - 4px);
+            margin: 2px;
+            border-radius: inherit;
+        }
+
+        @keyframes rotateGlow {
+            100% { transform: rotate(1 transfer); }
+        }
+
         .modal-scroll::-webkit-scrollbar { width: 6px; }
-        .modal-scroll::-webkit-scrollbar-track { background: #FAF5F2; border-radius: 8px; }
-        .modal-scroll::-webkit-scrollbar-thumb { background: #A27B5C; border-radius: 8px; }
-        .bg-soft-gradient { background: linear-gradient(135deg, #FAF5F2 0%, #F2D3CC 100%); }
+        .modal-scroll::-webkit-scrollbar-track { background: #F5E8E1; border-radius: 8px; }
+        .modal-scroll::-webkit-scrollbar-thumb { background: #8D5B4C; border-radius: 8px; }
     </style>
 </head>
 <body class="flex justify-center min-h-screen text-gray-800">
 
-    <div class="w-full max-w-[420px] bg-white relative shadow-2xl overflow-x-hidden min-h-screen pb-20">
+    <div class="w-full max-w-[420px] bg-white relative shadow-2xl overflow-x-hidden min-h-screen pb-20 border-x-4 border-brand-dark">
         
         <div class="scallop-top"></div>
 
@@ -60,254 +89,227 @@
             </svg>
 
             <div class="flex items-center gap-5 relative">
-                <div class="w-[110px] h-[110px] bg-brand-light rounded-[2.5rem] flex items-center justify-center relative shadow-inner p-1 overflow-visible border-4 border-white">
-                    <img src="220_20260202211043.png" alt="Bibimint Shop Profile" class="w-full h-full object-cover rounded-[2.2rem]">
-                    <div class="absolute -top-2 -right-3 bg-brand-dark text-white text-[9px] font-fredoka px-2.5 py-1 rounded-full flex items-center gap-1 shadow-md border border-white/20">
-                        <svg class="w-2.5 h-2.5 text-brand-light" viewBox="0 0 24 24" fill="currentColor">
-                            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                        </svg>
+                <div class="w-[115px] h-[115px] glow-border rounded-[2.5rem] p-1 flex items-center justify-center relative shadow-xl overflow-hidden">
+                    <img src="220_20260202211043.png" alt="Profile" class="w-full h-full object-cover rounded-[2.2rem] z-10">
+                    <div class="absolute -top-1 -right-2 bg-brand-dark text-white text-[10px] font-fredoka px-2.5 py-1 rounded-full z-20 shadow-md border border-white/30">
                         STORE
                     </div>
                 </div>
                 <div class="flex flex-col">
-                    <h1 class="font-fredoka text-4xl text-brand font-bold leading-none tracking-tight">Bibimint</h1>
-                    <h1 class="font-fredoka text-4xl text-black font-extrabold leading-none tracking-tight">shop</h1>
+                    <h1 class="font-fredoka text-5xl text-brand font-bold leading-none tracking-tighter">Bibimint</h1>
+                    <h1 class="font-fredoka text-5xl text-black font-extrabold leading-none tracking-tighter">shop</h1>
                     <div class="mt-2">
-                        <span class="bg-brand text-white font-fredoka text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-[0.15em] inline-block shadow-sm">Fonts & Design</span>
+                        <span class="bg-brand-dark text-white font-fredoka text-[10px] font-bold px-4 py-1.5 rounded-full uppercase tracking-[0.2em] inline-block shadow-lg">Premium Fonts</span>
                     </div>
                 </div>
             </div>
         </div>
 
         <div class="mt-8 px-6">
-            <h2 class="text-center font-extrabold text-[1.5rem] text-brand-dark tracking-tight">Bibimint Fonts Store</h2>
-            <div class="bg-brand-bg text-brand-dark text-[13px] text-center px-5 py-6 rounded-[2rem] mt-4 shadow-sm border border-brand-light leading-relaxed relative overflow-hidden">
-                <div class="absolute top-0 left-0 w-1 h-full bg-brand"></div>
-                ฟอนต์ลายมือสุดคิวท์ <br>
-                <span class="font-bold">ใช้ได้ทั้งส่วนตัวและเชิงพาณิชย์</span><br>
-                ตกแต่งป้ายสินค้า จดโน้ต หรือทำคอนเทนต์ก็น่ารัก!
+            <h2 class="text-center font-extrabold text-[1.6rem] text-brand-dark tracking-tight">Bibimint Fonts Store</h2>
+            <div class="bg-brand-bg text-brand-dark text-[14px] text-center px-5 py-6 rounded-[2.2rem] mt-4 shadow-inner border-2 border-brand-light leading-relaxed relative overflow-hidden">
+                <div class="absolute top-0 right-0 w-8 h-8 bg-brand/10 rounded-bl-full"></div>
+                ฟอนต์ลายมือลิขสิทธิ์ ดีไซน์น่ารัก อ่านง่าย <br>
+                <span class="font-bold text-brand-dark uppercase">● ใช้ได้ทั้งส่วนตัวและเชิงพาณิชย์ ●</span><br>
+                ตกแต่งป้าย ทำคอนเทนต์ หรือจดโน้ตได้ทุกสไตล์
             </div>
         </div>
 
         <div class="mt-10 px-6">
-            <h3 class="text-center font-fredoka font-bold text-sm tracking-[0.25em] text-gray-400 mb-5">FONTS MENU</h3>
+            <h3 class="text-center font-fredoka font-bold text-sm tracking-[0.3em] text-brand opacity-60 mb-6">EXPLORE CATALOG</h3>
             <div class="grid grid-cols-2 gap-4">
-                <a href="https://your-link-here.com" class="bg-soft-gradient border-2 border-white rounded-[2rem] py-6 flex flex-col items-center gap-3 hover:shadow-lg transition-all shadow-sm active:scale-95 group">
-                    <div class="w-12 h-12 bg-white rounded-2xl flex items-center justify-center shadow-sm group-hover:bg-brand group-hover:text-white transition-colors">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
-                        </svg>
+                <a href="https://drive.google.com/drive/folders/1jVyh3qFbGONGKAL9B98EPpfdcILW1TMf" target="_blank" class="glow-border rounded-[2.2rem] p-0.5 group active:scale-95 transition-transform">
+                    <div class="glow-inner flex flex-col items-center justify-center py-6 gap-3 rounded-[2.1rem]">
+                        <div class="w-12 h-12 bg-brand-bg rounded-2xl flex items-center justify-center text-brand group-hover:scale-110 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                            </svg>
+                        </div>
+                        <span class="text-[13px] font-bold text-brand-dark">ลิ้งค์เลือกฟอนต์</span>
                     </div>
-                    <span class="text-[14px] font-bold text-brand-dark">ลิ้งค์รวมฟอนต์</span>
                 </a>
-                <a href="https://your-promo-link.com" class="bg-brand border-2 border-brand-light rounded-[2rem] py-6 flex flex-col items-center gap-3 hover:shadow-lg transition-all shadow-md active:scale-95 group">
-                    <div class="w-12 h-12 bg-brand-dark/20 rounded-2xl flex items-center justify-center shadow-inner text-white">
-                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
-                        </svg>
+                <a href="https://drive.google.com/drive/folders/1Xzs9ISNuJ816GGloVus37ICCKaURVlOu" target="_blank" class="bg-brand-dark rounded-[2.2rem] p-0.5 group active:scale-95 transition-transform border-2 border-white/20 shadow-lg">
+                    <div class="flex flex-col items-center justify-center py-6 gap-3 rounded-[2.1rem]">
+                        <div class="w-12 h-12 bg-white/10 rounded-2xl flex items-center justify-center text-white group-hover:rotate-12 transition-transform">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M21 11.25v8.25a1.5 1.5 0 01-1.5 1.5H5.25a1.5 1.5 0 01-1.5-1.5v-8.25M12 4.875A2.625 2.625 0 109.375 7.5H12m0-2.625V7.5m0-2.625A2.625 2.625 0 1114.625 7.5H12m0 0V21m-8.625-9.75h18c.621 0 1.125-.504 1.125-1.125v-1.5c0-.621-.504-1.125-1.125-1.125h-18c-.621 0-1.125.504-1.125 1.125v1.5c0 .621.504 1.125 1.125 1.125z" />
+                            </svg>
+                        </div>
+                        <span class="text-[13px] font-bold text-white">โปรโมชั่นฟอนต์</span>
                     </div>
-                    <span class="text-[14px] font-bold text-white">ฟอนต์มีโปร</span>
                 </a>
-                <div class="hidden grid-cols-1"></div>
             </div>
         </div>
 
         <div class="px-8 mt-12 mb-8 flex items-center gap-4">
             <div class="h-px bg-brand-light flex-1"></div>
-            <h3 class="font-fredoka font-bold text-sm tracking-[0.25em] text-brand">PRICING</h3>
+            <h3 class="font-fredoka font-bold text-sm tracking-[0.3em] text-brand-dark">PRICING</h3>
             <div class="h-px bg-brand-light flex-1"></div>
         </div>
 
         <div class="px-6">
-            <div class="bg-brand-dark rounded-[2.5rem] p-7 text-white relative overflow-hidden shadow-xl border-b-4 border-black/20">
-                <svg class="absolute -right-6 -bottom-6 w-40 h-40 text-white opacity-10 rotate-12" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-                </svg>
-                
+            <div class="bg-brand-dark rounded-[2.5rem] p-8 text-white relative overflow-hidden shadow-2xl">
+                <div class="absolute -right-4 -top-4 w-24 h-24 bg-brand rounded-full opacity-20 blur-xl"></div>
                 <div class="text-[14px] font-medium opacity-80 mb-1">ราคาเริ่มต้นเพียง</div>
                 <div class="text-6xl font-bold font-mitr flex items-baseline gap-2">
-                    39.- <span class="text-[12px] font-mitr opacity-70 font-medium">/ 1 ฟอนต์</span>
+                    35.- <span class="text-[12px] font-mitr opacity-60 font-medium">/ 1 ลายมือ</span>
                 </div>
             </div>
 
             <div class="mt-4 flex flex-col gap-3">
-                <div class="flex justify-between items-center bg-white border-2 border-brand-light p-4 rounded-2xl shadow-sm text-sm hover:border-brand transition-colors">
-                    <span class="font-bold text-gray-700">ใช้ส่วนตัว (Personal Use)</span>
-                    <span class="font-bold text-brand-dark font-mitr text-xl">39.-</span>
+                <div class="flex justify-between items-center bg-white border-2 border-brand-light p-5 rounded-2xl shadow-sm hover:border-brand transition-all group">
+                    <span class="font-bold text-gray-700 group-hover:text-brand-dark">ใช้ส่วนตัว (Personal Use)</span>
+                    <span class="font-bold text-brand-dark font-mitr text-xl">35.-</span>
                 </div>
-                <div class="flex justify-between items-center bg-white border-2 border-brand-light p-4 rounded-2xl shadow-sm text-sm hover:border-brand transition-colors">
-                    <span class="font-bold text-gray-700">เชิงพาณิชย์ (Commercial)</span>
+                <div class="flex justify-between items-center bg-white border-2 border-brand-light p-5 rounded-2xl shadow-sm hover:border-brand transition-all group">
+                    <span class="font-bold text-gray-700 group-hover:text-brand-dark">เชิงพาณิชย์ (Commercial)</span>
                     <span class="font-bold text-brand-dark font-mitr text-xl">89.-</span>
                 </div>
             </div>
 
-            <div class="mt-6 border-2 border-dashed border-brand bg-brand-bg/50 rounded-[2rem] p-6 text-sm shadow-sm relative overflow-hidden group">
-                <div class="flex items-center gap-3 mb-3">
-                    <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white shadow-sm">
+            <div class="mt-6 border-2 border-dashed border-brand bg-brand-bg/40 rounded-[2.2rem] p-6 text-sm shadow-sm relative">
+                <div class="flex items-center gap-3 mb-4">
+                    <div class="w-8 h-8 bg-brand rounded-full flex items-center justify-center text-white">
                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
-                            <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487l1.687-1.688a1.875 1.875 0 112.652 2.652L6.832 19.82a4.5 4.5 0 01-1.89 1.113l-3.411.114a.75.75 0 01-.808-.808l.114-3.411a4.5 4.5 0 011.113-1.89l13.43-13.43z" />
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
                     </div>
-                    <span class="font-bold text-brand-dark text-base">Check Status & Queue</span>
+                    <span class="font-bold text-brand-dark text-base">Check Queue & Delivery</span>
                 </div>
-                <ul class="text-gray-600 space-y-2 text-[13px] list-disc pl-5 marker:text-brand">
-                    <li>จัดส่งไฟล์ภายใน 5-15 นาที หลังแจ้งโอน</li>
-                    <li>รับไฟล์ผ่านช่องทาง Google Drive / Email</li>
-                    <li>มีปัญหาการติดตั้ง ยินดีให้คำปรึกษาฟรี</li>
+                <ul class="text-gray-600 space-y-2 text-[13px] list-disc pl-5 marker:text-brand font-medium">
+                    <li>จัดส่งไฟล์ภายใน 5-15 นาที (ตามคิวโอน)</li>
+                    <li>รับไฟล์ผ่าน Google Drive ติดตั้งง่าย</li>
+                    <li>แถมฟรี! คู่มือการติดตั้งฟอนต์ทุกออเดอร์</li>
                 </ul>
-                <button class="mt-4 w-full py-2 border-2 border-dashed border-brand rounded-xl text-brand font-bold hover:bg-brand hover:text-white transition-all">
-                    พร้อมส่งทุกฟอนต์
+                <button class="mt-5 w-full py-2.5 border-2 border-dashed border-brand rounded-xl text-brand font-bold hover:bg-brand hover:text-white transition-all text-xs tracking-widest uppercase">
+                    Check Status
                 </button>
             </div>
 
-            <div class="mt-6 bg-brand rounded-[2rem] p-6 shadow-lg relative overflow-hidden text-white">
+            <div class="mt-6 bg-brand-dark rounded-[2.5rem] p-7 shadow-xl relative overflow-hidden text-white border-b-8 border-brand">
+                <div class="absolute -right-6 -bottom-6 w-32 h-32 bg-white/5 rounded-full blur-2xl"></div>
                 <div class="flex items-center gap-2 text-brand-light mb-1">
-                    <span class="font-fredoka text-[10px] font-bold tracking-[0.2em] uppercase">Special Offer</span>
+                    <span class="font-fredoka text-[10px] font-bold tracking-[0.2em] uppercase">Best Value Promotion</span>
                 </div>
-                <div class="font-mitr text-3xl font-extrabold mb-4">Set 3 ฟอนต์ 100.- เท่านั้น!</div>
+                <div class="font-mitr text-4xl font-extrabold mb-5">3 ฟอนต์ 100.-</div>
                 
-                <ul class="space-y-3 text-[13px]">
+                <ul class="space-y-4 text-[14px]">
                     <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 rounded-lg bg-brand-dark/30 flex items-center justify-center font-bold text-[11px] flex-shrink-0">❤</span>
-                        <span class="text-white/90">คุ้มกว่าเดิม ตกฟอนต์ละ 33 บาท</span>
+                        <div class="w-2 h-2 rounded-full bg-brand-light"></div>
+                        <span class="text-white/90">คละลายมือได้ทุกแบบภายในร้าน</span>
                     </li>
                     <li class="flex items-center gap-3">
-                        <span class="w-6 h-6 rounded-lg bg-brand-dark/30 flex items-center justify-center font-bold text-[11px] flex-shrink-0">❤</span>
-                        <span class="text-white/90">คละลายมือได้ทุกแนวในร้าน</span>
+                        <div class="w-2 h-2 rounded-full bg-brand-light"></div>
+                        <span class="text-white/90">แถมฟรี! ไฟล์ PNG ตกแต่ง 1 เซ็ต (สุ่ม)</span>
                     </li>
                 </ul>
             </div>
         </div>
 
         <div class="mt-14 px-6">
-            <div class="flex items-center gap-3 mb-8">
-                <div class="w-10 h-10 bg-brand-light rounded-2xl flex items-center justify-center text-brand">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
+            <div class="flex items-center gap-4 mb-8">
+                <div class="w-12 h-12 bg-brand-light rounded-2xl flex items-center justify-center text-brand shadow-sm">
+                    <svg class="w-7 h-7" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M16 11V7a4 4 0 118 0v4M5 9h14l1 12H4L5 9z" />
                     </svg>
                 </div>
-                <h3 class="font-fredoka font-bold text-lg tracking-tight text-brand-dark">HOW TO BUY</h3>
+                <h3 class="font-fredoka font-bold text-xl tracking-tight text-brand-dark">HOW TO BUY</h3>
             </div>
             
-            <div class="relative border-l-4 border-brand-light ml-5 space-y-8 pb-2">
+            <div class="relative border-l-4 border-brand-light ml-6 space-y-10 pb-2">
                 <div class="relative pl-10">
-                    <div class="absolute -left-[22px] top-0 w-10 h-10 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka text-sm shadow-md">1</div>
-                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[14px] tracking-wider">Choose Your Fonts</h4>
+                    <div class="absolute -left-[24px] top-0 w-11 h-11 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka shadow-lg">1</div>
+                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[15px]">Choose Your Fonts</h4>
                     <p class="text-[12px] text-gray-500 mt-1 leading-relaxed">เลือกฟอนต์ลายมือที่ชอบจากแคตตาล็อก หรือส่งรูปฟอนต์มาให้แอดมินดูได้เลย</p>
                 </div>
                 <div class="relative pl-10">
-                    <div class="absolute -left-[22px] top-0 w-10 h-10 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka text-sm shadow-md">2</div>
-                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[14px] tracking-wider">Usage Category</h4>
+                    <div class="absolute -left-[24px] top-0 w-11 h-11 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka shadow-lg">2</div>
+                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[15px]">Usage Category</h4>
                     <p class="text-[12px] text-gray-500 mt-1 leading-relaxed">ระบุประเภทการใช้งาน (ส่วนตัว / พาณิชย์) เพื่อให้ทางร้านจัดส่งสิทธิ์การใช้งานที่ถูกต้อง</p>
                 </div>
                 <div class="relative pl-10">
-                    <div class="absolute -left-[22px] top-0 w-10 h-10 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka text-sm shadow-md">3</div>
-                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[14px] tracking-wider">Payment</h4>
-                    <p class="text-[12px] text-gray-500 mt-1 leading-relaxed">ชำระเงินตามยอดฟอนต์ที่เลือก (เริ่มต้น 39.-) พร้อมแจ้งสลิปและอีเมลรับไฟล์</p>
+                    <div class="absolute -left-[24px] top-0 w-11 h-11 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka shadow-lg">3</div>
+                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[15px]">Payment</h4>
+                    <p class="text-[12px] text-gray-500 mt-1 leading-relaxed">ชำระเงินตามยอดฟอนต์ที่เลือก พร้อมแจ้งสลิปและอีเมลรับไฟล์</p>
                 </div>
                 <div class="relative pl-10">
-                    <div class="absolute -left-[22px] top-0 w-10 h-10 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka text-sm shadow-md">4</div>
-                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[14px] tracking-wider">Instant Delivery</h4>
+                    <div class="absolute -left-[24px] top-0 w-11 h-11 rounded-2xl border-4 border-white bg-brand flex items-center justify-center text-white font-bold font-fredoka shadow-lg">4</div>
+                    <h4 class="font-bold text-brand-dark font-fredoka uppercase text-[15px]">Instant Delivery</h4>
                     <p class="text-[12px] text-gray-500 mt-1 leading-relaxed">รับลิงก์ดาวน์โหลดไฟล์ฟอนต์ (.ttf / .otf) และใช้งานได้ทันที</p>
                 </div>
             </div>
         </div>
 
-        <div class="mt-12 mx-6 bg-white rounded-[2.5rem] p-7 shadow-lg border-t-8 border-brand">
-            <div class="flex items-center gap-3 mb-6">
-                <h3 class="font-fredoka font-bold text-lg tracking-tight text-brand-dark">SHOP POLICIES</h3>
-            </div>
-            
-            <ul class="text-[13px] text-gray-600 space-y-4 list-none">
-                <li class="flex gap-3">
-                    <span class="text-brand">●</span>
-                    <span>ฟอนต์ทุกตัว ห้ามนำไปขายต่อ หรือแจกฟรี</span>
+        <div class="mt-14 mx-6 bg-white rounded-[2.8rem] p-8 shadow-2xl border-t-8 border-brand-dark relative">
+            <div class="absolute -top-3 left-10 px-4 bg-brand-dark text-white rounded-full text-[10px] font-bold py-1">SHOP POLICIES</div>
+            <ul class="text-[13px] text-gray-600 space-y-5 mt-4 list-none">
+                <li class="flex gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand mt-2 flex-shrink-0"></div>
+                    <span>ฟอนต์ลิขสิทธิ์ ห้ามนำไฟล์ไปขายต่อ หรือแจกฟรีทุกกรณี</span>
                 </li>
-                <li class="flex gap-3">
-                    <span class="text-brand">●</span>
-                    <span>หากเลือกสิทธิ์ส่วนตัว ห้ามนำไปใช้ทำสื่อโฆษณา หรือป้ายสินค้าที่มีรายได้เข้า</span>
+                <li class="flex gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand mt-2 flex-shrink-0"></div>
+                    <span>สิทธิ์ส่วนตัว ห้ามใช้ทำสื่อโฆษณา/ป้ายสินค้าที่มีรายได้เข้า</span>
                 </li>
-                <li class="flex gap-3">
-                    <span class="text-brand">●</span>
-                    <span>ไฟล์ฟอนต์สามารถใช้ได้ทั้งใน iPad, คอมพิวเตอร์ และมือถือทุกระบบ</span>
-                </li>
-                <li class="flex gap-3">
-                    <span class="text-brand">●</span>
-                    <span>ซื้อแล้วไม่รับเปลี่ยนคืนไฟล์ เว้นแต่ไฟล์จะมีความเสียหายจากตัวฟอนต์เอง</span>
+                <li class="flex gap-4">
+                    <div class="w-1.5 h-1.5 rounded-full bg-brand mt-2 flex-shrink-0"></div>
+                    <span>ไฟล์ฟอนต์ใช้ได้ทั้ง iPad,canva, มือถือระบบ Android/iOS และคอมพิวเตอร์</span>
                 </li>
             </ul>
 
-            <div class="mt-8 bg-brand-dark text-white text-[12px] font-bold p-4 rounded-2xl shadow-inner flex items-center gap-3 leading-tight">
-                <div class="bg-brand p-2 rounded-xl">
-                    <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <div class="mt-10 bg-brand-dark text-white text-[12px] font-bold p-5 rounded-3xl shadow-inner flex items-center gap-4 leading-snug">
+                <div class="bg-white/20 p-2 rounded-xl">
+                    <svg class="w-6 h-6 text-brand-light" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                     </svg>
                 </div>
-                <span class="tracking-wide">แอดมินใจดีมาก ปรึกษาได้ตลอดนะคะ งดใช้คำไม่สุภาพน้า</span>
+                <span class="tracking-wide">แอดมินใจดีมาก ปรึกษาได้ตลอดนะคะ ยินดีดูแลหลังการขายค่ะ</span>
             </div>
         </div>
 
-        <div class="mt-16 mx-6 border-t-2 border-brand-light pt-10 pb-12">
-            <h3 class="font-fredoka font-bold text-xs tracking-[0.3em] text-gray-400 text-center mb-8 uppercase">Follow Bibimint</h3>
+        <div class="mt-16 mx-6 border-t-4 border-brand-light pt-12 pb-12">
+            <h3 class="font-fredoka font-bold text-xs tracking-[0.4em] text-gray-400 text-center mb-10 uppercase">Connect Bibimint</h3>
             
             <div class="flex flex-col items-center mb-10">
-                <div class="w-[140px] h-[140px] bg-white rounded-[3rem] flex items-center justify-center relative shadow-2xl border-8 border-brand-light group">
-                    <img src="scan.png" alt="Scan QR" class="w-[85%] h-[85%] object-cover rounded-[2rem] relative z-10 transition-transform group-hover:scale-105">
-                    <div class="absolute -left-4 top-1/2 -translate-y-1/2 w-2 h-16 bg-brand rounded-r-full z-20"></div>
-                    <div class="absolute -right-4 top-1/2 -translate-y-1/2 w-2 h-16 bg-brand rounded-l-full z-20"></div>
+                <div class="w-[160px] h-[160px] glow-border rounded-[3.5rem] flex items-center justify-center relative shadow-2xl overflow-hidden p-1">
+                    <img src="IMG_2951.png" alt="Contact Channel" class="w-full h-full object-cover rounded-[3.4rem] z-10">
                 </div>
-                <div class="mt-6 text-center">
-                    <div class="font-fredoka font-bold text-[12px] text-gray-400 tracking-[0.2em] mb-1">LINE OFFICIAL</div>
-                    <div class="font-fredoka font-bold text-brand-dark text-2xl tracking-tight">@BIBIMINT</div>
+                <div class="mt-8 text-center">
+                    <div class="font-fredoka font-bold text-[13px] text-gray-400 tracking-[0.3em] mb-2 uppercase">Line Official</div>
+                    <div class="font-fredoka font-bold text-brand-dark text-3xl tracking-tighter">@BIBIMINT</div>
                 </div>
             </div>
 
             <div class="space-y-4">
-                <a href="#" target="_blank" class="flex items-center justify-between bg-white border-2 border-brand-light p-4 rounded-3xl shadow-sm hover:border-brand transition-all group">
+                <a href="#" class="flex items-center justify-between bg-white border-2 border-brand-light p-5 rounded-[2rem] shadow-sm hover:border-brand-dark transition-all group">
                     <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-2xl bg-brand-light text-brand-dark flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
+                        <div class="w-11 h-11 rounded-2xl bg-brand-bg text-brand-dark flex items-center justify-center group-hover:bg-brand-dark group-hover:text-white transition-all">
+                            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M9 8h-3v4h3v12h5v-12h3.642l.358-4h-4v-1.667c0-.955.192-1.333 1.115-1.333h2.885v-5h-3.808c-3.596 0-5.192 1.583-5.192 4.615v3.385z"/></svg>
                         </div>
-                        <span class="font-fredoka font-bold text-[15px] text-brand-dark">FACEBOOK</span>
+                        <span class="font-fredoka font-bold text-[16px] text-brand-dark">FACEBOOK</span>
                     </div>
-                    <svg class="w-5 h-5 text-brand-light group-hover:text-brand transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
-                </a>
-                
-                <a href="#" target="_blank" class="flex items-center justify-between bg-white border-2 border-brand-light p-4 rounded-3xl shadow-sm hover:border-brand transition-all group">
-                    <div class="flex items-center gap-4">
-                        <div class="w-10 h-10 rounded-2xl bg-brand-light text-brand-dark flex items-center justify-center group-hover:bg-brand group-hover:text-white transition-colors">
-                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M8.625 9.75a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H8.25m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0H12m4.125 0a.375.375 0 11-.75 0 .375.375 0 01.75 0zm0 0h-.375m-13.5 3.01c0 1.6 1.123 2.994 2.707 3.227 1.087.16 2.185.283 3.293.369V21l4.184-4.183a1.14 1.14 0 01.778-.332 48.294 48.294 0 005.83-.498c1.585-.233 2.708-1.626 2.708-3.228V6.741c0-1.602-1.123-2.995-2.707-3.228A48.394 48.394 0 0012 3c-2.392 0-4.744.175-7.043.513C3.373 3.746 2.25 5.14 2.25 6.741v6.018z" /></svg>
-                        </div>
-                        <span class="font-fredoka font-bold text-[15px] text-brand-dark">LINE OFFICIAL</span>
-                    </div>
-                    <svg class="w-5 h-5 text-brand-light group-hover:text-brand transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
+                    <svg class="w-5 h-5 text-brand-light group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="4"><path stroke-linecap="round" stroke-linejoin="round" d="M9 5l7 7-7 7"/></svg>
                 </a>
             </div>
         </div>
 
         <div class="text-center pb-12">
-            <p class="font-fredoka text-[10px] tracking-[0.25em] text-gray-400 uppercase">Handcrafted Fonts by Bibimint Shop</p>
+            <p class="font-fredoka text-[11px] tracking-[0.3em] text-gray-400 uppercase">Premium Handcrafted Fonts by Bibimint</p>
         </div>
 
     </div>
 
-    <div id="modal-bright" class="fixed inset-0 bg-black/60 z-50 hidden items-center justify-center p-4 backdrop-blur-sm transition-opacity opacity-0 pointer-events-none">
-        <div class="bg-white rounded-[2.5rem] w-full max-w-[360px] flex flex-col max-h-[80vh] shadow-2xl transform scale-95 transition-transform duration-300 border-4 border-brand-light" id="modal-content-bright">
-            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-brand-bg rounded-t-[2.2rem]">
-                <h3 class="font-bold text-brand-dark flex items-center gap-2 text-base">
-                    Preview: Cute Fonts
-                </h3>
-                <button onclick="closeModal('modal-bright')" class="text-gray-400 hover:text-brand-dark bg-white p-2 rounded-full shadow-sm"><svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="2.5"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
+    <div id="modal-bright" class="fixed inset-0 bg-black/70 z-50 hidden items-center justify-center p-6 backdrop-blur-md transition-opacity opacity-0 pointer-events-none">
+        <div class="bg-white rounded-[3rem] w-full max-w-[380px] flex flex-col max-h-[80vh] shadow-2xl border-4 border-brand-light overflow-hidden" id="modal-content-bright">
+            <div class="p-6 border-b border-gray-100 flex justify-between items-center bg-brand-bg">
+                <h3 class="font-bold text-brand-dark text-lg">Font Preview</h3>
+                <button onclick="closeModal('modal-bright')" class="text-gray-400 hover:text-brand-dark bg-white p-2 rounded-full shadow-sm"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" stroke-width="3"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12"/></svg></button>
             </div>
-            <div class="p-6 overflow-y-auto modal-scroll flex flex-col gap-4">
-                <div class="p-4 bg-brand-bg rounded-2xl border border-brand-light">
-                    <p class="text-brand-dark font-bold mb-1">Font v.1</p>
-                    <p class="text-gray-500 text-xs">ตัวอย่างลายมือสุดน่ารักสำหรับสายจดโน้ต</p>
-                </div>
+            <div class="p-8 overflow-y-auto modal-scroll text-center text-gray-400">
+                คลิกดูได้ที่ Google Drive เพื่อความชัดเจนสูงสุดค่ะ
             </div>
         </div>
     </div>
-    
     <div id="modal-dark" class="hidden"></div>
     <div id="modal-pastel" class="hidden"></div>
 
@@ -319,10 +321,7 @@
             modal.classList.remove('hidden');
             setTimeout(() => {
                 modal.classList.remove('opacity-0', 'pointer-events-none');
-                if(content) {
-                    content.classList.remove('scale-95');
-                    content.classList.add('scale-100');
-                }
+                if(content) content.classList.replace('scale-95', 'scale-100');
             }, 10);
             document.body.style.overflow = 'hidden';
         }
@@ -332,20 +331,13 @@
             const content = document.getElementById(id.replace('modal-', 'modal-content-'));
             if(!modal) return;
             modal.classList.add('opacity-0', 'pointer-events-none');
-            if(content) {
-                content.classList.remove('scale-100');
-                content.classList.add('scale-95');
-            }
-            setTimeout(() => {
-                modal.classList.add('hidden');
-            }, 300);
+            if(content) content.classList.replace('scale-100', 'scale-95');
+            setTimeout(() => modal.classList.add('hidden'), 300);
             document.body.style.overflow = '';
         }
 
         window.onclick = function(event) {
-            if (event.target.classList.contains('fixed')) {
-                closeModal(event.target.id);
-            }
+            if (event.target.classList.contains('fixed')) closeModal(event.target.id);
         }
     </script>
 </body>
